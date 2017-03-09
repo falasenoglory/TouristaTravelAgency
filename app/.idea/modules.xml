@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Tourista-traver agency.iml" filepath="$PROJECT_DIR$/../Tourista-traver agency.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../TouristaTravelAgency.iml" filepath="$PROJECT_DIR$/../TouristaTravelAgency.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../stripe/stripe.iml" filepath="$PROJECT_DIR$/../stripe/stripe.iml" />
     </modules>
