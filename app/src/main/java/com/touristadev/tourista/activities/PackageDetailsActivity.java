@@ -35,7 +35,7 @@ import com.touristadev.tourista.Parser.DataParser;
 import com.touristadev.tourista.R;
 import com.touristadev.tourista.controllers.Controllers;
 import com.touristadev.tourista.dataModels.TourPackage;
-import com.touristadev.tourista.fragments.TGItineraryFragment;
+import com.touristadev.tourista.fragments.TAItineraryFragment;
 import com.touristadev.tourista.utils.HttpUtils;
 
 import org.json.JSONException;
@@ -51,7 +51,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class BookDetailsActivity extends FragmentActivity implements OnMapReadyCallback,
+public class PackageDetailsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
@@ -77,7 +77,7 @@ public class BookDetailsActivity extends FragmentActivity implements OnMapReadyC
         position = i.getIntExtra("position", 0);
         pack = Controllers.PackageList.get(position);
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
 
@@ -95,12 +95,13 @@ public class BookDetailsActivity extends FragmentActivity implements OnMapReadyC
 //
 //                }
 //            }
+            Log.d("here","hi");
             Fragment fragment;
-            fragment = new TGItineraryFragment();
+            fragment = new TAItineraryFragment();
             Bundle args = new Bundle();
-            args.putString("ARG_PARAM1", Controllers.TourBookedList.get(position).getPackageName());
+            args.putString("ARG_PARAM1", Controllers.PackageList.get(position).getPackageName());
             fragment.setArguments(args);
-            Controllers.bookedposition=position;
+            Controllers.packageposition=position;
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
             fr.add(R.id.fragment_container, fragment);
             fr.commit();
@@ -113,7 +114,7 @@ public class BookDetailsActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         //Initialize Google Play Services
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
@@ -135,7 +136,7 @@ public class BookDetailsActivity extends FragmentActivity implements OnMapReadyC
 //
               for(int x = 0 ; x<Controllers.PackageList.get(position).getSpots().size();x++){
                   mMap.addMarker(options.position(new LatLng(Double.parseDouble(Controllers.PackageList.get(position).getSpots().get(x).LONGITUDE),Double.parseDouble(Controllers.PackageList.get(position).getSpots().get(x).LATITUDE))));
-                    booked.add(new LatLng(Double.parseDouble(Controllers.PackageList.get(position).getSpots().get(x).LONGITUDE),Double.parseDouble(Controllers.TourBookedList.get(position).getItenerary_details().get(x).getLATITUDE())));
+                    booked.add(new LatLng(Double.parseDouble(Controllers.PackageList.get(position).getSpots().get(x).LONGITUDE),Double.parseDouble(Controllers.PackageList.get(position).getSpots().get(x).LATITUDE)));
                   options.icon(getMarkerIcon("#fecd23"));
 
                 }
@@ -428,7 +429,7 @@ private class FetchUrl extends AsyncTask<String, Void, String> {
 
 //            {"creditCardPassword": "12345678", "province": "Cebu", "isknowledgeable": "4.0000", "citizenship": "Filipino", "photoUrl": null, "expirationDateMonth": "January", "userId": "fqjGxEdbTRO8ufQRumkbaBk3Xg02", "contactNumber": "on hold", "rightpersonality": "4.0000", "EMAIL": "shael2008@yahoo.com", "ratings": 0, "expirationDateYear": "2017", "acts_professionaly": "4.0000", "priority": 10, "numAccept": 0, "streetAddress": "Oldog", "facebookId": "10202564070139378", "city": "Talisay", "guideId": "TG-fqjGxEdbTRO8ufQRumkbaBk3Xg02", "accountNumber": "200-200-200-200", "zipCode": "6045", "numRequest": 0, "PROFILE_DESCRIPTION": "ohla", "creditCardEmail": "shael2008@yahoo.com", "language": [], "firstName": "Shanyl", "cvv": "200", "lastName": "Jimenez", "expirationDateDay": "01", "birthday": "2016-02-11", "country": "Philippines"}
 
-            Intent intent = new Intent(BookDetailsActivity.this, TGTourActivity.class);
+            Intent intent = new Intent(PackageDetailsActivity.this, TGTourActivity.class);
             startActivity(intent);
         }
 

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -18,7 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.touristadev.tourista.R;
 import com.touristadev.tourista.controllers.Controllers;
-import com.touristadev.tourista.dataModels.TourRequest;
+import com.touristadev.tourista.dataModels.TourPackage;
 import com.touristadev.tourista.utils.HttpUtils;
 
 import org.json.JSONException;
@@ -26,24 +25,22 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class HistoryPackagedDetailsActivity extends AppCompatActivity {
+public class PackagedDetailsActivity extends AppCompatActivity {
     private int position;
     private ImageView imgPackage;
     private TextView txtPackageName,txtNumberSpots,txtNumberHours,txtPackPrice,txtPackDesc,txtCompanyName;
     private RatingBar ratBar;
     private ListView mListViewItinerary;
-    private Button btnEndTour,btnViewItinerary,btnCancel;
-    private TourRequest pack = new TourRequest();
+    private Button btnEndTour,btnDeletePackage;
+    private TourPackage pack = new TourPackage();
     private ArrayList<String> packItinerary = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booked_package_details);
+        setContentView(R.layout.activity_package_package_details);
         Intent i = getIntent();
         position = i.getIntExtra("position", 0);
-
-        Log.d("History na","History na details");
 
         imgPackage = (ImageView) findViewById(R.id.imgPackage);
         txtPackageName = (TextView) findViewById(R.id.txtRequestPackageName);
@@ -54,59 +51,48 @@ public class HistoryPackagedDetailsActivity extends AppCompatActivity {
         txtCompanyName = (TextView) findViewById(R.id.txtRequestAgencyName);
         mListViewItinerary = (ListView) findViewById(R.id.PackageItineraryListView);
 
-        btnViewItinerary= (Button) findViewById(R.id.btnDeletePackage);
+        btnDeletePackage= (Button) findViewById(R.id.btnDeletePackage);
         btnEndTour = (Button) findViewById(R.id.btnEditPackage);
-        btnCancel = (Button) findViewById(R.id.btnCancelTour);
 
-        btnCancel.setVisibility(View.GONE);
-        btnEndTour.setVisibility(View.GONE);
-        pack = Controllers.TourRequestList.get(Controllers.bookedposition);
+
+        pack = Controllers.PackageList.get(position);
 
         btnEndTour.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     EndTourTask task= new EndTourTask();
                     task.execute();
-                    Intent intent= new Intent(HistoryPackagedDetailsActivity.this, HistoryActivity.class);
-                    startActivity(intent);
+
 
                 }
             });
 
-        btnViewItinerary.setOnClickListener(new View.OnClickListener() {
+        btnDeletePackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
            //     ControllerFinal.RequestList.remove(position);
-                Intent intent= new Intent(HistoryPackagedDetailsActivity.this, BookDetailsActivity.class);
-                intent.putExtra("position",position);
-                startActivity(intent);
+//                Intent intent= new Intent(PackagedDetailsActivity.this, BookDetailsActivity.class);
+//                intent.putExtra("position",position);
+//                startActivity(intent);
 
             }
         });
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CancelTourTask task= new CancelTourTask();
-                task.execute();
-                Intent intent= new Intent(HistoryPackagedDetailsActivity.this,TGTourActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        Glide.with(HistoryPackagedDetailsActivity.this).load(Controllers.TourRequestList.get(position).getPhotoPath())
+
+        Glide.with(PackagedDetailsActivity.this).load(pack.getPhotoFileName())
                 .into(imgPackage);
             txtPackageName.setText(pack.getPackageName());
             txtNumberSpots.setText(pack.getNumOfSpots()+" Spots");
-            txtNumberHours.setText(pack.getTourDate());
-            txtPackPrice.setText("Php "+pack.getPrice() + "for tour guide.");
+            txtNumberHours.setText(pack.getDuration()+" Hours");
+            txtPackPrice.setText("Php "+pack.getPayment() + "for tour guide.");
             txtPackDesc.setText(pack.getDescription());
-            txtCompanyName.setText("by"+pack.getAgencyName());
+            txtCompanyName.setText("Php "+pack.getPayment() +"for travel agency.");
 
             packItinerary.clear();
 
-        for (int x = 0; x < pack.getItenerary_details().size(); x++) {
-            packItinerary.add(pack.getItenerary_details().get(x).getStartTime()+"\t\t\t\t "+pack.getItenerary_details().get(x).getEndTime()+"\t\t\t\t "+pack.getItenerary_details().get(x).getSpotName()+"\t\t\t\t");
+        for (int x = 0; x < pack.getSpots().size(); x++) {
+            packItinerary.add(pack.getSpots().get(x).startTime+"\t\t\t\t "+pack.getSpots().get(x).endTime+"\t\t\t\t "+pack.getSpots().get(x).spotName+"\t\t\t\t");
 
         }
 
@@ -149,7 +135,7 @@ public class HistoryPackagedDetailsActivity extends AppCompatActivity {
             String jsonTG = "";
             try {
 
-                obj.put("tourTransactionId", pack.getTourTransactionId());
+            //    obj.put("tourTransactionId", pack.getTourTransactionId());
                 obj.put("guideId", Controllers.CurrentGT.getTGGuideID());
                 obj.put("type", Controllers.TourBookedList.get(Controllers.bookedposition).getType());
 
@@ -157,7 +143,7 @@ public class HistoryPackagedDetailsActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-          //  HttpUtils.POST(Controllers.TGEndToourUrl, obj);
+           // HttpUtils.POST(Controllers.TGEndToourUrl, obj);
 
             return "";
         }
@@ -166,7 +152,7 @@ public class HistoryPackagedDetailsActivity extends AppCompatActivity {
 
 //            {"creditCardPassword": "12345678", "province": "Cebu", "isknowledgeable": "4.0000", "citizenship": "Filipino", "photoUrl": null, "expirationDateMonth": "January", "userId": "fqjGxEdbTRO8ufQRumkbaBk3Xg02", "contactNumber": "on hold", "rightpersonality": "4.0000", "EMAIL": "shael2008@yahoo.com", "ratings": 0, "expirationDateYear": "2017", "acts_professionaly": "4.0000", "priority": 10, "numAccept": 0, "streetAddress": "Oldog", "facebookId": "10202564070139378", "city": "Talisay", "guideId": "TG-fqjGxEdbTRO8ufQRumkbaBk3Xg02", "accountNumber": "200-200-200-200", "zipCode": "6045", "numRequest": 0, "PROFILE_DESCRIPTION": "ohla", "creditCardEmail": "shael2008@yahoo.com", "language": [], "firstName": "Shanyl", "cvv": "200", "lastName": "Jimenez", "expirationDateDay": "01", "birthday": "2016-02-11", "country": "Philippines"}
 
-            Intent intent = new Intent(HistoryPackagedDetailsActivity.this, TGTourActivity.class);
+            Intent intent = new Intent(PackagedDetailsActivity.this, TGTourActivity.class);
             startActivity(intent);
         }
 
@@ -181,7 +167,7 @@ public class HistoryPackagedDetailsActivity extends AppCompatActivity {
             String jsonTG = "";
             try {
 
-                obj.put("tourTransactionId", pack.getTourTransactionId());
+    //            obj.put("tourTransactionId", pack.getTourTransactionId());
                 obj.put("guideId", Controllers.CurrentGT.getTGGuideID());
                 obj.put("type", Controllers.TourBookedList.get(Controllers.bookedposition).getType());
 
@@ -198,7 +184,7 @@ public class HistoryPackagedDetailsActivity extends AppCompatActivity {
 
 //            {"creditCardPassword": "12345678", "province": "Cebu", "isknowledgeable": "4.0000", "citizenship": "Filipino", "photoUrl": null, "expirationDateMonth": "January", "userId": "fqjGxEdbTRO8ufQRumkbaBk3Xg02", "contactNumber": "on hold", "rightpersonality": "4.0000", "EMAIL": "shael2008@yahoo.com", "ratings": 0, "expirationDateYear": "2017", "acts_professionaly": "4.0000", "priority": 10, "numAccept": 0, "streetAddress": "Oldog", "facebookId": "10202564070139378", "city": "Talisay", "guideId": "TG-fqjGxEdbTRO8ufQRumkbaBk3Xg02", "accountNumber": "200-200-200-200", "zipCode": "6045", "numRequest": 0, "PROFILE_DESCRIPTION": "ohla", "creditCardEmail": "shael2008@yahoo.com", "language": [], "firstName": "Shanyl", "cvv": "200", "lastName": "Jimenez", "expirationDateDay": "01", "birthday": "2016-02-11", "country": "Philippines"}
 
-            Intent intent = new Intent(HistoryPackagedDetailsActivity.this, TGTourActivity.class);
+            Intent intent = new Intent(PackagedDetailsActivity.this, TGTourActivity.class);
             startActivity(intent);
         }
 

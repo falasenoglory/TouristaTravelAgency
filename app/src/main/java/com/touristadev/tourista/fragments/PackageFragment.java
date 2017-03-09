@@ -27,9 +27,6 @@ import com.touristadev.tourista.api.CurrentTravelAgency_API;
 import com.touristadev.tourista.api.DecodeJSONTourPackage;
 import com.touristadev.tourista.controllers.Controllers;
 import com.touristadev.tourista.utils.HttpUtils;
-import com.touristadev.tourista.utils.Utils;
-
-import org.json.JSONObject;
 
 public class PackageFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -64,7 +61,7 @@ public class PackageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_tgtour, container, false);
+        View v = inflater.inflate(R.layout.fragment_package, container, false);
 
         return v;
     }
@@ -75,15 +72,11 @@ public class PackageFragment extends Fragment {
         Log.d("shan","1");
 
         Controllers.PackageList.clear();
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_recycler_view_tgtour);
-        if (Utils.isNetworkAvailable(PackageFragment.super.getActivity())) {
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_recycler_view_package);
 
             FetchPackages tad= new FetchPackages();
             tad.execute();
 
-        } else {
-            showToast("No Network Connection!!!");
-        }
 
 
         //permet un affichage sous forme liste verticale
@@ -150,7 +143,6 @@ public class PackageFragment extends Fragment {
         @Override
         protected void onPostExecute(String rt) {
             super.onPostExecute(rt);
-            JSONObject wew = new JSONObject();
 
             Log.d("Shanyl","Booked: "+rt);
             Controllers.PackageList.clear();

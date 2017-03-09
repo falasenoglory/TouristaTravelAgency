@@ -2,12 +2,12 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ccontent_package_details"
+    android:id="@+id/ccontent_package_package_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.touristadev.tourista.activities.RequestPackageDetailsActivity"
-    tools:showIn="@layout/activity_booked_package_details">
+    tools:showIn="@layout/activity_package_package_details">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -144,7 +144,7 @@
             android:layout_alignParentEnd="true" />
 
         <Button
-            android:text="End Tour"
+            android:text="Edit Package"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -156,28 +156,23 @@
             android:layout_marginBottom="20dp" />
 
         <Button
-            android:text="Cancel Tour"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnCancelTour"
-            android:background="@drawable/buttonbackground"
-            android:textColor="#e74c3c"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/btnDeletePackage"
-            android:layout_marginEnd="0dp"
-            android:layout_width="match_parent"
-            android:layout_marginTop="20dp" />
-
-        <Button
             android:text="View Itinerary"
             android:gravity="center"
             android:layout_height="wrap_content"
             android:id="@+id/btnDeletePackage"
-            android:background="@drawable/button_accent_fill"
+            android:background="@drawable/button_decline"
             android:textColor="@color/colorTextIcons"
             android:layout_width="match_parent"
             android:layout_below="@+id/btnEditPackage"
             android:layout_alignParentStart="true" />
+
+        <ToggleButton
+            android:text="ToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggleButton"
+            android:layout_below="@+id/txtRequestPackageName"
+            android:layout_alignEnd="@+id/PackageItineraryListView" />
 
 
     </RelativeLayout>

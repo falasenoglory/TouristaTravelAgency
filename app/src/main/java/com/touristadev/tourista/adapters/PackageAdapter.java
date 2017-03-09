@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.touristadev.tourista.R;
-import com.touristadev.tourista.activities.BookedPackagedDetailsActivity;
+import com.touristadev.tourista.activities.PackagedDetailsActivity;
 import com.touristadev.tourista.dataModels.TourPackage;
 
 import java.util.ArrayList;
@@ -57,14 +57,12 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.MyViewHo
             txtTourDate = (TextView) itemView.findViewById(R.id.txtTourDate);
             txtTourPaymentForTG = (TextView) itemView.findViewById(R.id.txtTourPaymentForTG);
             imgTourPackageImage= (ImageView)itemView.findViewById(R.id.imgTourPackageImage);
-            txtNoOfSpots=(TextView) itemView.findViewById(R.id.txtNoOfSpots);
+            txtNoOfSpots=(TextView) itemView.findViewById(R.id.txtPackageNoOfSpot);
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int pos= getAdapterPosition();
-
-                    Intent intent= new Intent(view.getContext(),BookedPackagedDetailsActivity.class);
+                    Intent intent= new Intent(view.getContext(),PackagedDetailsActivity.class);
                     intent.putExtra("position",getAdapterPosition());
                     view.getContext().startActivity(intent);
 
@@ -85,7 +83,7 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.MyViewHo
     @Override
     public PackageAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.cv_tgtours, parent, false);
+                .inflate(R.layout.cv_package, parent, false);
 
         Log.d("shan","4");
         view.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +104,8 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.MyViewHo
         Glide.with(holder.view.getContext()).load(mData.get(position).getPhotoFileName())
                 .into(holder.imgTourPackageImage);
         holder.txtTourPackageName.setText(mData.get(position).getPackageName());
-        holder.txtNoOfSpots.setText(mData.get(position).getNumOfSpots());
-        holder.txtTourDate.setText(mData.get(position).getMinPeople()+"People in Min");
+        holder.txtNoOfSpots.setText(mData.get(position).getNumOfSpots()+" Spots");
+        holder.txtTourDate.setText(mData.get(position).getMinPeople()+" People in Min");
         holder.txtTourPaymentForTG.setText("For Tour guide: Php"+mData.get(position).getPayment());
     }
 

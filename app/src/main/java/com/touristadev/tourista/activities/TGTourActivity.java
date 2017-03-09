@@ -64,10 +64,11 @@ public class TGTourActivity extends AppCompatActivity {
 
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
-//                if (menuItemId == R.id.bbfeedbar) {
-//                    Intent i = new Intent(TGTourActivity.this, FeedActivity.class);
-//                    startActivity(i);
-//                }
+
+                if (menuItemId == R.id.bbpackage) {
+                    Intent i = new Intent(TGTourActivity.this, PackageActivity.class);
+                    startActivity(i);
+                }
                 if (menuItemId == R.id.bbrequestbar) {
                     Intent i = new Intent(TGTourActivity.this, RequestActivity.class);
                     startActivity(i);
