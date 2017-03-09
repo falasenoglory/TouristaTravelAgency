@@ -20,6 +20,7 @@ public class TourPackage {
     public String photoFileName;
     public String category;
     public ArrayList<SpotsPackage> spots;
+    public String tgpayment;
 
     public static String PACKAGEID = "packageId";
     public static String PACKAGENAME = "packageName";
@@ -34,6 +35,7 @@ public class TourPackage {
     public static String PHOTOFILENAME = "photoPath";
     public static String CATEGORY = "category";
     public static String SPOTS = "spots";
+    public static String PAYMENTTG = "tgpayment";
 
     public TourPackage(String packageId, String packageName, String travelAgencyId, float payment, int numOfTGNeeded, float rating, String description, String duration, int numOfSpots, int minPeople, String photoFileName, String category) {
         this.packageId = packageId;
@@ -48,6 +50,23 @@ public class TourPackage {
         this.minPeople = minPeople;
         this.photoFileName = photoFileName;
         this.category = category;
+    }
+
+    public TourPackage(String packageId, String packageName, String travelAgencyId, float payment, int numOfTGNeeded, float rating, String description, String duration, int numOfSpots, int minPeople, String photoFileName, String category, ArrayList<SpotsPackage> spots, String tgpayment) {
+        this.packageId = packageId;
+        this.packageName = packageName;
+        this.travelAgencyId = travelAgencyId;
+        this.payment = payment;
+        this.numOfTGNeeded = numOfTGNeeded;
+        this.rating = rating;
+        this.description = description;
+        this.duration = duration;
+        this.numOfSpots = numOfSpots;
+        this.minPeople = minPeople;
+        this.photoFileName = photoFileName;
+        this.category = category;
+        this.spots = spots;
+        this.tgpayment = tgpayment;
     }
 
     public TourPackage(String packageId, String packageName, String travelAgencyId, float payment, int numOfTGNeeded, float rating, String description, String duration, int numOfSpots, int minPeople, String photoFileName, String category, ArrayList<SpotsPackage> spots) {
@@ -86,6 +105,7 @@ public class TourPackage {
                 "minPeople" + ":\"" + minPeople + "\"" +
                 "photoFileName" + ":\"" + photoFileName + "\"" +
                 "category" + ":\"" + category + "\"" +
+                "tgpayment" + ":\"" + tgpayment + "\"" +
                 '}';
     }
 
@@ -298,5 +318,21 @@ public class TourPackage {
 
     public static void setSPOTS(String SPOTS) {
         TourPackage.SPOTS = SPOTS;
+    }
+
+    public String getTgpayment() {
+        return tgpayment;
+    }
+
+    public void setTgpayment(String tgpayment) {
+        this.tgpayment = tgpayment;
+    }
+
+    public static String getPAYMENTTG() {
+        return PAYMENTTG;
+    }
+
+    public static void setPAYMENTTG(String PAYMENTTG) {
+        TourPackage.PAYMENTTG = PAYMENTTG;
     }
 }
