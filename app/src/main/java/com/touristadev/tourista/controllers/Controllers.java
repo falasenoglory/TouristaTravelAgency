@@ -29,7 +29,7 @@ public class Controllers {
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
-    public static String URL = "http://192.168.254.101:8000";
+    public static String URL = "http://192.168.1.5:8000";
     public static FirebaseUser user;
     public static String currentUser;
     public static TourGuide CurrentGT = new TourGuide();
@@ -55,6 +55,7 @@ public class Controllers {
     private static double referralPoints = 0,temppoints =0;
     public static int bookedposition;
     public static int requestposition;
+    public static int packageposition;
     public static String response;
 
 

@@ -57,7 +57,7 @@ public class PackageActivity extends AppCompatActivity {
         mBottomBar= BottomBar.attach(this,savedInstanceState);
         mBottomBar.useFixedMode();
         mBottomBar.setActiveTabColor(Color.parseColor("#fecd23"));
-        mBottomBar.setDefaultTabPosition(1);
+        mBottomBar.setDefaultTabPosition(0);
         mBottomBar.setItemsFromMenu(R.menu.menu_travelagency, new OnMenuTabClickListener() {
 
 
@@ -65,8 +65,7 @@ public class PackageActivity extends AppCompatActivity {
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 if(menuItemId== R.id.bbpackage)
                 {
-                    t = new PackageFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerRequest, t).commit();
+
 
                 }
                 if (menuItemId == R.id.bbrequestbar) {

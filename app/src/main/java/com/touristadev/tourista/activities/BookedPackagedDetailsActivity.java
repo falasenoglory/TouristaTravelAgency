@@ -31,14 +31,14 @@ public class BookedPackagedDetailsActivity extends AppCompatActivity {
     private TextView txtPackageName,txtNumberSpots,txtNumberHours,txtPackPrice,txtPackDesc,txtCompanyName;
     private RatingBar ratBar;
     private ListView mListViewItinerary;
-    private Button btnEndTour,btnViewItinerary,btnCancel;
+    private Button btnEditPackage,btnViewItinerary,btnCancel;
     private TourRequest pack = new TourRequest();
     private ArrayList<String> packItinerary = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booked_package_details);
+        setContentView(R.layout.activity_package_package_details);
         Intent i = getIntent();
         position = i.getIntExtra("position", 0);
 
@@ -51,18 +51,18 @@ public class BookedPackagedDetailsActivity extends AppCompatActivity {
         txtCompanyName = (TextView) findViewById(R.id.txtRequestAgencyName);
         mListViewItinerary = (ListView) findViewById(R.id.PackageItineraryListView);
 
-        btnViewItinerary= (Button) findViewById(R.id.btnViewItinerary);
-        btnEndTour = (Button) findViewById(R.id.btnEndTour);
+        btnViewItinerary= (Button) findViewById(R.id.btnDeletePackage);
+        btnEditPackage = (Button) findViewById(R.id.btnEditPackage);
         btnCancel = (Button) findViewById(R.id.btnCancelTour);
 
 
         pack = Controllers.TourRequestList.get(Controllers.bookedposition);
 
-        btnEndTour.setOnClickListener(new View.OnClickListener() {
+        btnEditPackage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    EndTourTask task= new EndTourTask();
-                    task.execute();
+//                    EndTourTask task= new EndTourTask();
+//                    task.execute();
 //                    Intent intent= new Intent(BookedPackagedDetailsActivity.this, ReferralCodeActivity.class);
 //                    startActivity(intent);
 //                    AlertDialog.Builder builder = new AlertDialog.Builder(BookedPackagedDetailsActivity.this);
@@ -103,16 +103,6 @@ public class BookedPackagedDetailsActivity extends AppCompatActivity {
                 intent.putExtra("position",position);
                 startActivity(intent);
 
-            }
-        });
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CancelTourTask task= new CancelTourTask();
-                task.execute();
-                Intent intent= new Intent(BookedPackagedDetailsActivity.this,TGTourActivity.class);
-                startActivity(intent);
             }
         });
 

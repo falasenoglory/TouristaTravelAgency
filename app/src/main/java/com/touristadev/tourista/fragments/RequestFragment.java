@@ -125,6 +125,7 @@ public class RequestFragment extends Fragment {
         protected String doInBackground(Void... params) {
             String url=Controllers.GETallRequestUrl+ CurrentTravelAgency_API.travelAgencyId+"&status=Request";
             String json = HttpUtils.GET(url);
+            Log.d("Shash","Ondoing "+json);
             return json;
         }
 

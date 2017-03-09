@@ -87,8 +87,9 @@
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.RegisterTwoActivity" />
         <activity android:name=".activities.RegisterFinalStepActivity" />
-        <activity android:name=".activities.PackageActivity" />
-        <activity android:name=".activities.SpotsFeedActivity"></activity>
+        <activity android:name=".activities.PackageActivity"></activity>
+        <activity android:name=".activities.PackagedDetailsActivity"></activity>
+        <activity android:name=".activities.PackageDetailsActivity"></activity>
     </application>
 
 </manifest>
