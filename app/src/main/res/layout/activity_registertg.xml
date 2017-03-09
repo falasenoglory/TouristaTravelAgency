@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_containerRequest"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.touristadev.tourista.activities.RequestActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarL"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/txtLastName"
+        android:hint="Last Name"
+        android:layout_below="@+id/txtZipCode"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/txtZipCode" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/txtAddress"
+        android:hint="Email Address"
+        android:layout_below="@+id/txtLastName"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/txtLastName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/txtContactNumber"
+        android:hint="Contact Number"
+        android:layout_below="@+id/txtAddress"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/txtBirthdate"
+        android:hint="Birthdate"
+        android:layout_below="@+id/txtContactNumber"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/txtCountry"
+        android:hint="Country"
+        android:inputType="text"
+        android:layout_below="@+id/txtCitizenship"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/txtCity"
+        android:hint="City"
+        android:inputType="text"
+        android:layout_below="@+id/txtCountry"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/txtCitizenship"
+        android:hint="Citizenship"
+        android:inputType="text"
+        android:layout_below="@+id/txtBirthdate"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/txtZipCode"
+        android:hint="First Name"
+        android:layout_marginTop="78dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/txtProvince"
+        android:hint="Province"
+        android:inputType="text"
+        android:layout_below="@+id/txtCity"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/txtStreetAddress"
+        android:hint="Street Adrress"
+        android:inputType="text"
+        android:layout_below="@+id/txtProvince"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Next"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRegisterNext"
+        android:background="@drawable/button_accent_fill"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@+id/txtStreetAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+</RelativeLayout>
+

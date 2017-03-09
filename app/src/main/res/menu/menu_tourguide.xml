@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/bbrequestbar"
+        android:icon="@mipmap/ic_requests"
+        android:title="Request"/>
+
+    <item android:id="@+id/bbtourbar"
+        android:icon="@mipmap/ic_tours"
+        android:title="Tours"/>
+
+    <item android:id="@+id/bbhistory"
+        android:icon="@mipmap/ic_history"
+        android:title="History"/>
+
+    <item android:id="@+id/bbprofile"
+        android:icon="@mipmap/ic_passport"
+        android:title="Profile"/>
+
+
+</menu>

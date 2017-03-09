@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.touristadev.tourista">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBhlvfTahR4vl4kGLNmVXQvcUU8etoTEFc" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider376098946064922"
+            android:exported="true" />
+        ///////////// SERVICES START ///////////////////////////
+        <service android:name=".services.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".services.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        ///////////// SERVICES END ///////////////////////////
+
+        ///////////// SHANYL START ///////////////////////////
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.RequestActivity" />
+        <activity
+            android:name=".activities.PassportActivity"
+            android:label="@string/title_activity_passport"
+            android:theme="@style/noAnimTheme" />
+        <activity android:name=".activities.TGTourActivity" />
+        <activity android:name=".activities.ReferralCodeActivity" />
+        <activity android:name=".activities.QRCodeActivity" />
+        <activity android:name=".activities.HistoryActivity" />
+        ///////////// SHANYL END ///////////////////////////
+
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <activity
+            android:name=".activities.BottomNavigationActivity"
+            android:label="@string/title_activity_tours"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.RequestPackageDetailsActivity" />
+        <activity android:name=".activities.PolicyActivity" />
+        <activity android:name=".algo.TourGuideRecommendationActivity" />
+        <activity
+            android:name=".algo.PaymentIntegration"
+            android:label="@string/title_activity_payment_integration"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.BookDetailsActivity" />
+        <activity android:name=".algo.ConfirmationActivity" />
+        <activity android:name=".activities.BookedPackagedDetailsActivity" />
+        <activity android:name=".formba.MBAActivity" />
+        <activity android:name=".activities.MBAActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.RegisterTwoActivity" />
+        <activity android:name=".activities.RegisterFinalStepActivity"></activity>
+    </application>
+
+</manifest>

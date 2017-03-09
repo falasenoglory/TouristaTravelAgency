@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvPackage"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:background="@mipmap/stafe"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:id="@+id/cvPackageNamee"
+                android:layout_width="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:text="Name of Spot here"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="27dp" />
+
+            <RatingBar
+                style="?android:attr/ratingBarStyleSmall"
+                android:rating="4"
+                android:numStars="6"
+                android:layout_width="wrap_content"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="11dp"
+                android:id="@+id/cvRatingBar" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cvNumberOfSpots"
+                android:textStyle="bold"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_alignBaseline="@+id/cvPackageNamee"
+                android:layout_alignBottom="@+id/cvPackageNamee"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:text="spots"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:textStyle="bold"
+                android:layout_below="@+id/cvNumberOfSpots"
+                android:layout_alignLeft="@+id/cvNumberOfSpots"
+                android:layout_alignStart="@+id/cvNumberOfSpots"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/ic_launcher"
+                android:id="@+id/imageView2"
+                android:layout_alignTop="@+id/cvNumberOfSpots"
+                android:layout_toLeftOf="@+id/cvNumberOfSpots"
+                android:layout_toStartOf="@+id/cvNumberOfSpots"
+                android:layout_marginRight="11dp"
+                android:layout_marginEnd="11dp" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>

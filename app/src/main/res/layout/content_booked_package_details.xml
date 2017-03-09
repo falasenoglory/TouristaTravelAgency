@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ccontent_package_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.touristadev.tourista.activities.RequestPackageDetailsActivity"
+    tools:showIn="@layout/activity_booked_package_details">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="215dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/imgPackage" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/cardview_shadow_start_color"
+            android:layout_below="@+id/txtRequestAgencyName"
+            android:id="@+id/TGrelLay"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="1dp"
+            android:elevation="4dp">
+        </RelativeLayout>
+
+        <TextView
+            android:text="Package Name"
+            android:id="@+id/txtRequestPackageName"
+            android:layout_marginTop="15dp"
+            android:textSize="25sp"
+            app:layout_anchor="@+id/include"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_below="@+id/imgPackage"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:text="by Travel Agency Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRequestAgencyName"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/txtRequestPackageName"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Package Description"
+            android:textSize="14sp"
+            android:id="@+id/txtRequestPackageDescription"
+            android:textStyle="normal|italic"
+            android:layout_below="@+id/txtRequestAgencyName"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/txtRequestNumberSpot"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+        <TextView
+            android:text="Number of Spots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRequestNumberSpot"
+            android:layout_below="@+id/TGrelLay"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/cardview_shadow_start_color"
+            android:layout_below="@+id/txtRequestNumberHours"
+            android:id="@+id/TGrelLay2"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="5dp"
+            android:elevation="6dp"
+            android:layout_height="1dp">
+        </RelativeLayout>
+
+        <ListView
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/PackageItineraryListView"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/TGActivityTitle"
+            android:layout_alignStart="@+id/TGActivityTitle"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="40dp" />
+
+
+        <RatingBar
+            android:layout_height="wrap_content"
+            android:id="@+id/rtTGBar"
+            android:isIndicator="true"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:layout_above="@+id/TGrelLay"
+            android:layout_toEndOf="@+id/txtRequestPackageName" />
+
+        <TextView
+            android:text="Number of Hours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRequestNumberHours"
+            android:layout_below="@+id/txtRequestNumberSpot"
+            android:layout_alignParentStart="true"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Package Itinerary"
+            android:textSize="20sp"
+            android:id="@+id/TGActivityTitle"
+            android:layout_below="@+id/TGrelLay2"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:textStyle="normal|bold"
+            android:textColor="@color/colorPrimaryText" />
+
+        <TextView
+            android:text="Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRequestPaymentForTG"
+            android:layout_below="@+id/txtRequestNumberHours"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="End Tour"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEndTour"
+            android:layout_below="@id/PackageItineraryListView"
+            android:background="@drawable/button_accept"
+            android:layout_marginLeft="0dp"
+            android:textColor="@color/colorTextIcons"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:text="Cancel Tour"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCancelTour"
+            android:background="@drawable/buttonbackground"
+            android:textColor="#e74c3c"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/btnViewItinerary"
+            android:layout_marginEnd="0dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:text="View Itinerary"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnViewItinerary"
+            android:background="@drawable/button_accent_fill"
+            android:textColor="@color/colorTextIcons"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/btnEndTour"
+            android:layout_alignParentStart="true" />
+
+
+    </RelativeLayout>
+</ScrollView>
