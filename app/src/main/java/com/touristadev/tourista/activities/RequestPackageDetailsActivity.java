@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class RequestPackageDetailsActivity extends AppCompatActivity {
     private int position;
     private ImageView imgPackage;
-    private TextView txtPackageName,txtNumberSpots,txtNumberHours,txtPackPrice,txtPackDesc,txtCompanyName;
+    private TextView txtPackageName,txtNumberSpots,txtNumberHours,txtPackPrice,txtPackDesc,txtCompanyName,txtRequestedby;
     private RatingBar ratBar;
     private ListView mListViewItinerary;
     private Button btnAccept,btnDecline;
@@ -51,6 +51,7 @@ public class RequestPackageDetailsActivity extends AppCompatActivity {
         txtNumberHours = (TextView) findViewById(R.id.txtRequestNumberHours);
         txtPackPrice = (TextView) findViewById(R.id.txtRequestPaymentForTG);
         mListViewItinerary = (ListView) findViewById(R.id.PackageItineraryListView);
+        txtRequestedby=(TextView) findViewById(R.id.txtRequestedby);
 
         btnDecline= (Button) findViewById(R.id.btnRequestDecline);
         btnAccept = (Button) findViewById(R.id.btnRequestAccept);
@@ -58,21 +59,21 @@ public class RequestPackageDetailsActivity extends AppCompatActivity {
         pack = Controllers.TourRequestList.get(position);
 
         btnAccept.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AcceptTourTask task= new AcceptTourTask();
-                    task.execute();
+            @Override
+            public void onClick(View view) {
+                AcceptTourTask task= new AcceptTourTask();
+                task.execute();
 
-                    Intent intent= new Intent(RequestPackageDetailsActivity.this, RequestPackageDetailsActivity.class);
-                    startActivity(intent);
+                Intent intent= new Intent(RequestPackageDetailsActivity.this, RequestPackageDetailsActivity.class);
+                startActivity(intent);
 
-                }
-            });
+            }
+        });
 
         btnDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-           //     ControllerFinal.RequestList.remove(position);
+                //     ControllerFinal.RequestList.remove(position);
                 DeclineTourTask task= new DeclineTourTask();
                 task.execute();
                 Intent intent= new Intent(RequestPackageDetailsActivity.this, RequestActivity.class);
@@ -83,12 +84,13 @@ public class RequestPackageDetailsActivity extends AppCompatActivity {
 
         Glide.with(RequestPackageDetailsActivity.this).load(Controllers.TourRequestList.get(position).getPhotoPath())
                 .into(imgPackage);
-            txtPackageName.setText(pack.getPackageName());
-            txtNumberSpots.setText(pack.getNumOfSpots()+" Spots");
-            txtNumberHours.setText("Tour date: "+pack.getTourDate());
-            txtPackPrice.setText("Php "+pack.getTGPayment()+ " for guide");
-            txtPackDesc.setText(pack.getDescription());
-            txtCompanyName.setText(pack.getAgencyName());
+        txtPackageName.setText(pack.getPackageName());
+        txtNumberSpots.setText(pack.getNumOfSpots()+" Spots");
+        txtNumberHours.setText("Tour date: "+pack.getTourDate());
+        txtPackPrice.setText("Php "+pack.getTGPayment()+ " for guide");
+        txtPackDesc.setText(pack.getDescription());
+        txtCompanyName.setText(pack.getAgencyName());
+        txtRequestedby.setText(pack.getTouristName());
 
         packItinerary.clear();
         for (int x = 0; x < pack.getItenerary_details().size(); x++) {
@@ -96,35 +98,35 @@ public class RequestPackageDetailsActivity extends AppCompatActivity {
 
         }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, android.R.id.text1, packItinerary);
-            mListViewItinerary.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, packItinerary);
+        mListViewItinerary.setAdapter(adapter);
 
 
-            ListAdapter listAdapter1 = mListViewItinerary.getAdapter();
-            if (listAdapter1 != null) {
+        ListAdapter listAdapter1 = mListViewItinerary.getAdapter();
+        if (listAdapter1 != null) {
 
-                int numberOfItems = listAdapter1.getCount();
+            int numberOfItems = listAdapter1.getCount();
 
-                // Get total height of all items.
-                int totalItemsHeight = 0;
-                for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
-                    View item = listAdapter1.getView(itemPos, null, mListViewItinerary);
-                    item.measure(0, 0);
-                    totalItemsHeight += item.getMeasuredHeight();
-                }
-
-                // Get total height of all item dividers.
-                int totalDividersHeight = mListViewItinerary.getDividerHeight() *
-                        (numberOfItems - 1);
-
-                // Set list height.
-                ViewGroup.LayoutParams params = mListViewItinerary.getLayoutParams();
-                params.height = totalItemsHeight + totalDividersHeight;
-                mListViewItinerary.setLayoutParams(params);
-                mListViewItinerary.requestLayout();
-
+            // Get total height of all items.
+            int totalItemsHeight = 0;
+            for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
+                View item = listAdapter1.getView(itemPos, null, mListViewItinerary);
+                item.measure(0, 0);
+                totalItemsHeight += item.getMeasuredHeight();
             }
+
+            // Get total height of all item dividers.
+            int totalDividersHeight = mListViewItinerary.getDividerHeight() *
+                    (numberOfItems - 1);
+
+            // Set list height.
+            ViewGroup.LayoutParams params = mListViewItinerary.getLayoutParams();
+            params.height = totalItemsHeight + totalDividersHeight;
+            mListViewItinerary.setLayoutParams(params);
+            mListViewItinerary.requestLayout();
+
+        }
     }
 
     public class AcceptTourTask extends AsyncTask<Void, Void, String> {

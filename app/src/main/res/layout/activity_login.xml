@@ -29,6 +29,18 @@
         android:layout_alignTop="@+id/btnLogin"
         android:layout_alignStart="@+id/btnLogin" />
 
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:id="@+id/agencyPassword"
+        android:hint="Enter Password"
+        android:layout_below="@+id/agencyEmail"
+        android:layout_centerHorizontal="true" />
+
     <com.shaishavgandhi.loginbuttons.FacebookButton
         android:id="@+id/btnLogin"
         android:layout_width="300dp"
@@ -38,8 +50,20 @@
         android:textAlignment="center"
         app:iconSize="0dp"
         app:roundedCorner="true"
-        android:layout_marginBottom="181dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/agencyPassword"
+        android:layout_alignStart="@+id/agencyPassword" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:textColorHint="@color/colorWhite"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/agencyEmail"
+        android:hint="Enter Email"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/agencyPassword" />
 
 </RelativeLayout>

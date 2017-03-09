@@ -2,7 +2,6 @@ package com.touristadev.tourista.api;
 
 import android.util.Log;
 
-import com.touristadev.tourista.controllers.Controllers;
 import com.touristadev.tourista.dataModels.TGAcceptance;
 import com.touristadev.tourista.dataModels.TourGuide;
 
@@ -84,7 +83,7 @@ public class CurrentUser_API {
 
                 TourGuide amt = new TourGuide(TGFirebaseId,TGfacebookId,TGGuideID,TGEmail,TGPhotoUrl,TGfirstName," ",TGlastName,TGProfileDescription,TGcellphoneNumber,TGdateOfBirth,TGcitizenship,TGCity,TGStreedAddress,TGCounty,TGZipCode,genAllRating,genAcceptanceRating,TGLanguages,actsProfessionally,isKnowledgeable,hasTheRightPersonality,TGcountPriority,TGCreditCardEmail,TGCreditCardPassword,TGCreditCardNo,TGCreditExpiryMo,TGCreditExpiryYr,TGCreditExpiryDay,TGCreditCVV);
                 Log.d("Shanyl","TG model: "+amt.toString());
-                Controllers.CurrentGT=amt;
+//                Controllers.CurrentGT=amt;
                 Log.d("Shanyl","Controller model: "+amt.toString());
 
 

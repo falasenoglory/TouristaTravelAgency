@@ -179,7 +179,7 @@ public class BookedPackagedDetailsActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            HttpUtils.POST(Controllers.TGEndToourUrl, obj);
+           // HttpUtils.POST(Controllers.TGEndToourUrl, obj);
 
             return "";
         }

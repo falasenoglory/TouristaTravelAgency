@@ -73,7 +73,7 @@ public class PassportActivity extends AppCompatActivity {
         if(tourguidemode)
         {
 
-            mBottomBar.setItemsFromMenu(R.menu.menu_tourguide, new OnMenuTabClickListener() {
+            mBottomBar.setItemsFromMenu(R.menu.menu_travelagency, new OnMenuTabClickListener() {
                 @Override
                 public void onMenuTabSelected(@IdRes int menuItemId) {
 //                    if (menuItemId == R.id.bbfeedbar) {
@@ -115,7 +115,7 @@ public class PassportActivity extends AppCompatActivity {
 
         else {
 
-            mBottomBar.setItemsFromMenu(R.menu.menu_tourguide, new OnMenuTabClickListener() {
+            mBottomBar.setItemsFromMenu(R.menu.menu_travelagency, new OnMenuTabClickListener() {
                 @Override
                 public void onMenuTabSelected(@IdRes int menuItemId) {
 //                    if (menuItemId == R.id.bottombar1) {
@@ -152,11 +152,11 @@ public class PassportActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         if(tourguidemode)
         {
-            getMenuInflater().inflate(R.menu.menu_tourguide, menu);
+            getMenuInflater().inflate(R.menu.menu_travelagency, menu);
         }
         else
         {
-            getMenuInflater().inflate(R.menu.menu_tourguide, menu);
+            getMenuInflater().inflate(R.menu.menu_travelagency, menu);
         }
         return true;
     }

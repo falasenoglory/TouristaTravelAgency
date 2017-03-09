@@ -3,8 +3,7 @@ package com.touristadev.tourista.dataModels;
 /**
  * Created by Shanyl Jimenez on 11/26/2016.
  */
-public class Spots
-{
+public class Spots {
     private String spotID;
     private String spotName;
     private String spotAddress;
@@ -15,7 +14,6 @@ public class Spots
     private String spotLocationLat;
     private int spotRating;
     private int spotImage;
-
     public Spots() {
     }
 

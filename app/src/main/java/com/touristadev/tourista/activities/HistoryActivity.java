@@ -59,7 +59,7 @@ public class HistoryActivity extends AppCompatActivity {
         mBottomBar.useFixedMode();
         mBottomBar.setActiveTabColor(Color.parseColor("#fecd23"));
         mBottomBar.setDefaultTabPosition(2);
-        mBottomBar.setItemsFromMenu(R.menu.menu_tourguide, new OnMenuTabClickListener() {
+        mBottomBar.setItemsFromMenu(R.menu.menu_travelagency, new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 if(menuItemId== R.id.bbrequestbar)

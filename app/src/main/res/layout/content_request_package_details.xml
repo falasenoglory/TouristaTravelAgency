@@ -143,13 +143,24 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true" />
 
+        <TextView
+            android:text="Requested by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRequestedby"
+            android:layout_below="@+id/PackageItineraryListView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" />
+
         <Button
             android:text="Accept"
             android:gravity="center"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:id="@+id/btnRequestAccept"
-            android:layout_below="@id/PackageItineraryListView"
+            android:layout_below="@id/txtRequestedby"
             android:background="@drawable/button_accept"
             android:layout_marginLeft="40dp"
             android:textColor="@color/colorTextIcons" />
@@ -161,10 +172,11 @@
             android:id="@+id/btnRequestDecline"
             android:background="@drawable/button_decline"
             android:textColor="@color/colorTextIcons"
-            android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/PackageItineraryListView"
-            android:layout_marginEnd="40dp"
-            android:layout_width="100dp" />
+            android:layout_width="100dp"
+            android:layout_alignBaseline="@+id/btnRequestAccept"
+            android:layout_alignBottom="@+id/btnRequestAccept"
+            android:layout_toEndOf="@+id/TGActivityTitle"
+            android:layout_marginStart="28dp" />
 
 
     </RelativeLayout>

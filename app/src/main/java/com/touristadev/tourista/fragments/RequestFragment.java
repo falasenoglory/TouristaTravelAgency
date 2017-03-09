@@ -23,6 +23,7 @@ import com.touristadev.tourista.R;
 import com.touristadev.tourista.activities.ShadowTransformer;
 import com.touristadev.tourista.adapters.CardFragmentPagerAdapter;
 import com.touristadev.tourista.adapters.RequestAdapter;
+import com.touristadev.tourista.api.CurrentTravelAgency_API;
 import com.touristadev.tourista.api.TourRequest_API;
 import com.touristadev.tourista.controllers.Controllers;
 import com.touristadev.tourista.utils.HttpUtils;
@@ -71,7 +72,7 @@ public class RequestFragment extends Fragment {
         Log.d("shan","1");
 
         Controllers.TourRequestList.clear();
-      //  FetchTourRequestTask tad= new FetchTourRequestTask();
+        //  FetchTourRequestTask tad= new FetchTourRequestTask();
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_recycler_view_request);
         if (Utils.isNetworkAvailable(RequestFragment.super.getActivity())) {
 
@@ -122,7 +123,7 @@ public class RequestFragment extends Fragment {
 
         @Override
         protected String doInBackground(Void... params) {
-            String url=Controllers.TGGetRequestUrl+ Controllers.CurrentGT.getTGGuideID()+"&status=Request";
+            String url=Controllers.GETallRequestUrl+ CurrentTravelAgency_API.travelAgencyId+"&status=Request";
             String json = HttpUtils.GET(url);
             return json;
         }
@@ -132,6 +133,7 @@ public class RequestFragment extends Fragment {
             super.onPostExecute(rt);
 
             Log.d("Shanyl","Request: "+rt);
+            Controllers.TourRequestList.clear();
             Controllers.TourRequestList= TourRequest_API.getTourRequestList(rt);
             Log.d("Shanyl","Request Fragment TourRequestList: "+ Controllers.TourRequestList.toString());
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());

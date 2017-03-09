@@ -63,9 +63,15 @@ public class RequestActivity extends AppCompatActivity {
         mBottomBar.useFixedMode();
         mBottomBar.setActiveTabColor(Color.parseColor("#fecd23"));
         mBottomBar.setDefaultTabPosition(0);
-        mBottomBar.setItemsFromMenu(R.menu.menu_tourguide, new OnMenuTabClickListener() {
+        mBottomBar.setItemsFromMenu(R.menu.menu_travelagency, new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
+                if(menuItemId== R.id.bbpackage)
+                {
+                    Intent i = new Intent(RequestActivity.this, PackageActivity.class);
+                    startActivity(i);
+
+                }
                 if(menuItemId== R.id.bbrequestbar)
                 {
                     t = new RequestFragment();

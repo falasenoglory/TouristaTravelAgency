@@ -21,7 +21,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
 
         mBottomBar= BottomBar.attach(this,savedInstanceState);
         mBottomBar.useFixedMode();
-        mBottomBar.setItemsFromMenu(R.menu.menu_tourguide, new OnMenuTabClickListener() {
+        mBottomBar.setItemsFromMenu(R.menu.menu_travelagency, new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
 //                if(menuItemId== R.id.bottombar1)
@@ -58,7 +58,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
 
-        getMenuInflater().inflate(R.menu.menu_tourguide, menu);
+        getMenuInflater().inflate(R.menu.menu_travelagency, menu);
         return true;
     }
 
